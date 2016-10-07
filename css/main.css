@@ -1,0 +1,53 @@
+body{
+  /*background: red; /* For browsers that do not support gradients */
+  /*background: -webkit-radial-gradient(circle, red, yellow, black); /* Safari */
+  /*background: -o-radial-gradient(circle, red, yellow, black); /* Opera 11.6 to 12.0 */
+  /*background: -moz-radial-gradient(circle, red, yellow, black); /* Firefox 3.6 to 15 */
+  background: radial-gradient(darkgrey -100%, black); /* Standard syntax */
+  position: relative;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+ul{
+  list-style: none;
+}
+#sun { /*posición del sol*/
+  display:block;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(orange, yellow,red);
+  border-radius: 50%;
+  box-shadow: 0 0 10px 10px orange;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+html,body, #stars{
+  height:100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+.planet{ /*posición de los planetas*/
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ABC;
+  display: block;
+}
+.planets{
+  width: 1px;
+  height: 1px;
+  display:block;
+  background: radial-gradient(orange, yellow,red);
+  border-radius: 50%;
+  box-shadow: 0 0 10px 10px orange;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
