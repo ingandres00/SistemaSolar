@@ -15,6 +15,7 @@ var Planet =function () {
      name: planet_names.pop(),
      dom_orbit:null,
      dom_planet:null,
+     Starsun: null,
      rotation_process_id : null,
 //metodos
     getSize:function(){
@@ -27,6 +28,7 @@ var Planet =function () {
     getOrbitSize: function () {
       return this.orbit_size + "px";
     },
+
     pushDOMElement: function(parent){
       //planet_orbit describe la orbita de los planetas
       var planet_orbit = document.createElement("li");
@@ -50,10 +52,11 @@ var Planet =function () {
       parent.appendChild(planet_orbit);
       this.dom_orbit = planet_orbit;
       this.dom_planet = planet_body;
+
     },
     startRotation: function (){
       var self = this;
-      var freq = 10; 
+      var freq = 10;
       this.rotation_process_id = setInterval(function(){
         if(self.clockwise_translation === 1){
           self.orbit_position += self.speed/freq;
@@ -62,7 +65,20 @@ var Planet =function () {
         }
           self.dom_orbit.style.transform = "rotate("+self.orbit_position+"deg)";
       },1000/freq);
-    }
+    },
+    addEventHandlerToStop: function (){
+      var self = this;
+      this.dom_planet.addEventListener("mouseover", function (){
+        clearInterval(self.rotation_process_id);
+      });
+    },
+    addEventHandlerToStart: function (){
+      var self = this;
+      this.Starsun.addEventListener("mouseover", function(){
+        startRotation()
+
+      });
+    },
   };
 };
 var number_of_planets = 8;
@@ -77,6 +93,8 @@ document.addEventListener("DOMContentLoaded",function(){
   {
     planets[planet_pos].pushDOMElement(planetary_system);
     planets[planet_pos].startRotation();
+    planets[planet_pos].addEventHandlerToStop();
+    planets[planet_pos].addEventHandlerToStart();
   }
 });
 console.log(planets);
